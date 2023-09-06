@@ -20,6 +20,8 @@ streamlit.dataframe(fruits_to_show)
 
 streamlit.header('Healthy Menu Advice')
 fruitchoosed = streamlit.text_input(fruits_selected)
+fruitchoosed = streamlit.text_input('What fruit would you like information about?','Kiwi')
+streamlit.write('The user entered ', fruitchoosed)
 fruityvice_response= requests.get("https://fruityvice.com/api/fruit/" + fruitchoosed)
 streamlit.text(fruityvice_response.json())
 
