@@ -21,7 +21,7 @@ streamlit.dataframe(fruits_to_show)
 
 streamlit.header('Healthy Menu Advice')
 try:
-fruitchoosed = streamlit.text_input('What fruit would you like information about?','Kiwi')
+  fruitchoosed = streamlit.text_input('What fruit would you like information about?','Kiwi')
 if not fruitchoosed:
   streamlit.error("Please select appropriate fruit to get information")
 else:
