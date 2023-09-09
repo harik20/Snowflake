@@ -24,15 +24,15 @@ streamlit.header('Healthy Menu Advice')
 fruitchoosed = streamlit.text_input('What fruit would you like to add?')
 streamlit.write('Thanks for adding' + fruitchoosed)
 def getfruitydata(this_fruitchoosed):
-    fruityvice_response= requests.get("https://fruityvice.com/api/fruit/" + fruitchoosed)
+    fruityvice_response= requests.get("https://fruityvice.com/api/fruit/" + this_fruitchoosed)
     fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
     return fruityvice_normalized
   
 try:
   fruitchoosed = streamlit.text_input('What fruit would you like information about?','Kiwi')
   if not fruitchoosed:
-    streamlit.error("Please select appropriate fruit to get information")
+      streamlit.error("Please select appropriate fruit to get information")
   else:
-    streamlit.write('The user entered ', fruitchoosed)
-    backfromfunction = getfruitydata(fruitchoosed)
-    streamlit.dataframe(backfromfunction)
+      streamlit.write('The user entered ', fruitchoosed)
+      backfromfunction = getfruitydata(fruitchoosed)
+      streamlit.dataframe(backfromfunction)
