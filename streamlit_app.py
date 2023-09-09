@@ -36,5 +36,3 @@ try:
     streamlit.write('The user entered ', fruitchoosed)
     backfromfunction = getfruitydata(fruitchoosed)
     streamlit.dataframe(backfromfunction)
-
-
