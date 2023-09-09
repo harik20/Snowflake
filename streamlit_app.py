@@ -33,6 +33,5 @@ try:
   if not fruitchoosed:
       streamlit.error("Please select appropriate fruit to get information")
   else:
-      streamlit.write('The user entered ', fruitchoosed)
       backfromfunction = getfruitydata(fruitchoosed)
       streamlit.dataframe(backfromfunction)
