@@ -20,6 +20,15 @@ fruits_to_show = my_fruit_list.loc[fruits_selected]
 streamlit.dataframe(fruits_to_show)
 
 streamlit.header('Healthy Menu Advice')
+my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+my_cur = my_cnx.cursor()
+my_cur.execute("select * from fruit_load_list")
+my_data_rows = my_cur.fetchall()
+streamlit.text("The Fruit list is: ")
+streamlit.dataframe(my_data_rows)
+
+fruitchoosed = streamlit.text_input('What fruit would you like to add?')
+streamlit.write('Thanks for adding' + fruitchoosed)
 def getfruitydata(this_fruitchoosed):
     fruityvice_response= requests.get("https://fruityvice.com/api/fruit/" + fruitchoosed)
     fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
@@ -33,16 +42,6 @@ try:
     streamlit.write('The user entered ', fruitchoosed)
     backfromfunction = getfruitydata(fruitchoosed)
     streamlit.dataframe(backfromfunction)
-
-my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
-my_cur = my_cnx.cursor()
-my_cur.execute("select * from fruit_load_list")
-my_data_rows = my_cur.fetchall()
-streamlit.text("The Fruit list is: ")
-streamlit.dataframe(my_data_rows)
-
-fruitchoosed = streamlit.text_input('What fruit would you like to add?')
-streamlit.write('Thanks for adding' + fruitchoosed)
 
 
 
