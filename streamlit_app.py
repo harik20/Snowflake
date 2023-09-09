@@ -22,12 +22,12 @@ streamlit.dataframe(fruits_to_show)
 streamlit.header('Healthy Menu Advice')
 try:
   fruitchoosed = streamlit.text_input('What fruit would you like information about?','Kiwi')
-if not fruitchoosed:
-  streamlit.error("Please select appropriate fruit to get information")
-else:
-  streamlit.write('The user entered ', fruitchoosed)
-  backfromfunction = getfruitydata(fruitchoosed)
-  streamlit.dataframe(backfromfunction)
+  if not fruitchoosed:
+    streamlit.error("Please select appropriate fruit to get information")
+  else:
+    streamlit.write('The user entered ', fruitchoosed)
+    backfromfunction = getfruitydata(fruitchoosed)
+    streamlit.dataframe(backfromfunction)
   
 def getfruitydata(this_fruitchoosed):
   fruityvice_response= requests.get("https://fruityvice.com/api/fruit/" + fruitchoosed)
